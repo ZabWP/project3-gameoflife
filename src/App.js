@@ -12,9 +12,8 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<GameOfLife />} />
-          <Route path="/game" element={<GameOfLife />} />
-          <Route path="*" element={<Navigate to="/" />} />
+          <Route path="project3-gameoflife/" element={<GameOfLife />} />
+          <Route path="./game" element={<GameOfLife />} />
         </Routes>
       </Router>
     </div>
