@@ -89,6 +89,17 @@ const Admin = () => {
     }
   };
 
+  const formatTime = (milliseconds) => {
+    const seconds = Math.floor(milliseconds / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+
+    const remainingSeconds = seconds % 60;
+    const remainingMinutes = minutes % 60;
+
+    return `${hours}h ${remainingMinutes}m ${remainingSeconds}s`;
+  };
+
   if (loading) {
     return (
       <div>
@@ -116,7 +127,7 @@ const Admin = () => {
             <tr key={user.userID}>
               <td>{user.userID}</td>
               <td>{user.username}</td>
-              <td>{user.timeSpent}</td>
+              <td>{formatTime(user.timeSpent)}</td>
               <td>{user.createdAt}</td>
               <td>{user.isAdmin ? "Yes" : "No"}</td>
               <td>

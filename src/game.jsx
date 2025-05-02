@@ -1,5 +1,6 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./game.css";
+import useUserStore from "./Stores/userStore";
 
 // Size of the grid
 const numRows = 25;
@@ -66,6 +67,10 @@ const GameOfLife = () => {
   const [running, setRunning] = useState(false);
   const [runCount, setRunCount] = useState(1);
   const runningRef = useRef(running);
+  const [timeSpent, setTimeSpent] = useState(0);
+  const startTimeRef = useRef(null);
+  const timeSpentRef = useRef(0);
+  const username = useUserStore((state) => state.username);
   runningRef.current = running;
 
   // Recursive function to run the simulation
@@ -107,6 +112,54 @@ const GameOfLife = () => {
     setTimeout(runSimulation, 200);
   };
 
+  useEffect(() => {
+    if (!username) return;
+
+    if (running) {
+      // Start timing
+      startTimeRef.current = Date.now();
+    } else {
+      // Stop timing and calculate duration
+      if (startTimeRef.current !== null) {
+        const diff = Date.now() - startTimeRef.current;
+        timeSpentRef.current += diff;
+        setTimeSpent(timeSpentRef.current);
+        startTimeRef.current = null;
+      }
+    }
+  }, [running]);
+
+  // Save time on unmount and tab/window close
+  useEffect(() => {
+    const handleUnload = () => {
+      // Sync timeSpent before unload
+      if (running && startTimeRef.current !== null) {
+        const diff = Date.now() - startTimeRef.current;
+        timeSpentRef.current += diff;
+        startTimeRef.current = null;
+      }
+
+      const data = {
+        username,
+        timeSpent: Math.floor(timeSpentRef.current / 1000),
+      };
+
+      const blob = new Blob([JSON.stringify(data)], {
+        type: "application/json",
+      });
+
+      navigator.sendBeacon(
+        "https://codd.cs.gsu.edu/~zbronola1/GOL/updateTime.php",
+        blob
+      );
+    };
+
+    window.addEventListener("beforeunload", handleUnload);
+    return () => {
+      window.removeEventListener("beforeunload", handleUnload);
+    };
+  }, []);
+
   // Function to toggle the state of a cell on mouse click. (0 = dead, 1 = alive)
   const toggleCell = (i, j) => {
     setRunning(false);
@@ -145,8 +198,8 @@ const GameOfLife = () => {
 
   // Function to run a fixed number of generations
   const runFixedGenerations = () => {
-    setRunning(false);
-    runningRef.current = false;
+    setRunning(true);
+    runningRef.current = true;
     let gen = 0;
     let newGrid = [...grid];
     while (gen < runCount) {
@@ -170,11 +223,15 @@ const GameOfLife = () => {
       gen++;
     }
     setGrid(newGrid);
+    setRunning(false);
+    runningRef.current = false;
   };
 
   return (
     // Main HTML component layout
     <div className="gameOfLife">
+      <p>Time spent: {(timeSpent / 1000).toFixed(1)} seconds</p>
+
       <h2>Conway's Game of Life</h2>
       <div className="controls">
         {/* Start Button */}
