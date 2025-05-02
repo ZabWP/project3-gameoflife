@@ -109,13 +109,19 @@ const GameOfLife = () => {
 
   // Function to toggle the state of a cell on mouse click. (0 = dead, 1 = alive)
   const toggleCell = (i, j) => {
+    setRunning(false);
+    runningRef.current = false;
     const newGrid = grid.map((row) => [...row]);
     newGrid[i][j] = grid[i][j] ? 0 : 1;
     setGrid(newGrid);
   };
 
   // Function to clear the grid
-  const clearGrid = () => setGrid(generateGrid());
+  const clearGrid = () => {
+    setRunning(false);
+    runningRef.current = false;
+    setGrid(generateGrid());
+  };
 
   // Function to load a preset pattern into the grid
   const loadPreset = (name) => {
@@ -139,6 +145,8 @@ const GameOfLife = () => {
 
   // Function to run a fixed number of generations
   const runFixedGenerations = () => {
+    setRunning(false);
+    runningRef.current = false;
     let gen = 0;
     let newGrid = [...grid];
     while (gen < runCount) {
