@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router-dom";
+
 const Login = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="loginComponent">
       <h2>Login</h2>
@@ -14,7 +18,13 @@ const Login = () => {
         <button type="submit">Login</button>
         <p>
           Don't have an account?{" "}
-          <a href="/project3-gameoflife/register">Register</a>
+          <button
+            onClick={() => {
+              navigate("/project3-gameoflife/register");
+            }}
+          >
+            Register
+          </button>
         </p>
       </form>
     </div>

@@ -11,7 +11,11 @@ const Navbar = () => {
 
   return (
     <div className="navbar">
-      <a href="/project3-gameoflife/">Play</a>
+      <button onClick={() => navigate("/project3-gameoflife/")}>Play</button>
+
+      <button onClick={() => navigate("project3-gameoflife/admin")}>
+        Admin
+      </button>
       {username ? (
         <button onClick={() => handleLogout()}>Logout</button>
       ) : (
