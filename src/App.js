@@ -13,7 +13,10 @@ function App() {
       <Router>
         <Routes>
           <Route path="project3-gameoflife/" element={<GameOfLife />} />
-          <Route path="./game" element={<GameOfLife />} />
+          <Route
+            path="project3-gameoflife/*"
+            element={<Navigate to="/project3-gameoflife/" />}
+          />
         </Routes>
       </Router>
     </div>
