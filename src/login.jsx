@@ -68,17 +68,17 @@ const Login = () => {
           <input type="password" id="password" required />
         </div>
         <button type="submit">Login</button>
-        <p>
-          Don't have an account?{" "}
-          <button
-            onClick={() => {
-              navigate("/project3-gameoflife/register");
-            }}
-          >
-            Register
-          </button>
-        </p>
       </form>
+      <p>
+        Don't have an account?{" "}
+        <button
+          onClick={() => {
+            navigate("/project3-gameoflife/register");
+          }}
+        >
+          Register
+        </button>
+      </p>
     </div>
   );
 };
