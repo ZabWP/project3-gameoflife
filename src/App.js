@@ -24,7 +24,7 @@ function App() {
           />
 
           <Route path="project3-gameoflife/register" element={<Register />} />
-          <Route path="/project3-gameoflife/admin" element={<Admin />} />
+          <Route path="project3-gameoflife/admin" element={<Admin />} />
         </Routes>
       </Router>
     </div>
