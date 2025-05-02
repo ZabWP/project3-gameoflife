@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/project3-gameoflife/static/js/main.7e08fb96.js",
+    "main.js": "/project3-gameoflife/static/js/main.99d48dd6.js",
     "index.html": "/project3-gameoflife/index.html",
-    "main.7e08fb96.js.map": "/project3-gameoflife/static/js/main.7e08fb96.js.map"
+    "main.99d48dd6.js.map": "/project3-gameoflife/static/js/main.99d48dd6.js.map"
   },
   "entrypoints": [
-    "static/js/main.7e08fb96.js"
+    "static/js/main.99d48dd6.js"
   ]
 }
