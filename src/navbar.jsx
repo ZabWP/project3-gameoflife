@@ -7,6 +7,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     useUserStore.getState().logout();
+    navigate("/project3-gameoflife");
   };
 
   return (

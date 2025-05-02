@@ -34,7 +34,6 @@ const Admin = () => {
         const data = await response.json();
         if (data[0].isAdmin != 1) {
           navigate("/project3-gameoflife");
-          alert("You are not an admin");
         }
       } catch (error) {
         console.error("Error checking admin status:", error);
