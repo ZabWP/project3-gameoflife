@@ -63,7 +63,7 @@ const GameOfLife = () => {
   // Initializing variables and grid
   const [grid, setGrid] = useState(() => generateGrid());
   const [running, setRunning] = useState(false);
-  const [runCount, setRunCount] = useState(0);
+  const [runCount, setRunCount] = useState(1);
   const runningRef = useRef(running);
   runningRef.current = running;
 
