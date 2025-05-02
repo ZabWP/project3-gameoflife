@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import useUserStore from "./Stores/userStore";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -8,6 +9,7 @@ const Register = () => {
   const [isLoading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const navigate = useNavigate();
+  const setUsernameStore = useUserStore((state) => state.setUsername);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -109,6 +111,7 @@ const Register = () => {
       const data = await res.json();
       console.log("Response from server:", data);
       if (data.status === "success") {
+        setUsernameStore(username);
         navigate("/project3-gameoflife");
       } else {
         // Error: backend returns invalid data
