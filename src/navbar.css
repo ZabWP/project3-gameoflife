@@ -1,0 +1,15 @@
+.navbar {
+  display: flex;
+  width: 100vw;
+  justify-content: space-between;
+  align-items: center;
+
+  & div {
+    display: flex;
+    align-items: center;
+  }
+
+  & button {
+    height: 30px;
+  }
+}
