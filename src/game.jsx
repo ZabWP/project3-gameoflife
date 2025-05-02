@@ -230,8 +230,6 @@ const GameOfLife = () => {
   return (
     // Main HTML component layout
     <div className="gameOfLife">
-      <p>Time spent: {(timeSpent / 1000).toFixed(1)} seconds</p>
-
       <h2>Conway's Game of Life</h2>
       <div className="controls">
         {/* Start Button */}
