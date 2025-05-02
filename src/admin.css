@@ -1,0 +1,100 @@
+/* Admin Page Styles */
+.adminPage {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f7f7f7;
+  min-height: 100vh;
+}
+
+.adminPage h1 {
+  font-size: 2rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+th,
+td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #4caf50;
+  color: white;
+  font-weight: bold;
+}
+
+td {
+  background-color: #ffffff;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Action Button Styles */
+button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #ff3333;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Loading and Error Message Styles */
+.loading,
+.error {
+  font-size: 1.2rem;
+  color: #f44336;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.loading {
+  font-weight: bold;
+}
+
+.error {
+  color: #f44336;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .adminPage {
+    padding: 10px;
+  }
+
+  table {
+    font-size: 14px;
+  }
+
+  th,
+  td {
+    padding: 8px;
+  }
+
+  button {
+    padding: 6px 12px;
+  }
+}

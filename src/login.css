@@ -1,0 +1,84 @@
+.loginComponent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f7fa;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.loginComponent h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.loginComponent form {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.loginComponent form div {
+  margin-bottom: 1.2rem;
+}
+
+.loginComponent label {
+  font-size: 1rem;
+  color: #555;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.loginComponent input {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fafafa;
+  box-sizing: border-box;
+}
+
+.loginComponent input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.loginComponent button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.loginComponent button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.loginComponent p {
+  font-size: 1rem;
+  color: #555;
+  margin-top: 1rem;
+}
+
+.loginComponent button {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.loginComponent button:hover {
+  text-decoration: underline;
+}

@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import "./game.css";
 
 // Size of the grid
 const numRows = 25;
@@ -165,9 +166,9 @@ const GameOfLife = () => {
 
   return (
     // Main HTML component layout
-    <div>
+    <div className="gameOfLife">
       <h2>Conway's Game of Life</h2>
-      <div style={{ marginBottom: 10 }}>
+      <div className="controls">
         {/* Start Button */}
         <button
           onClick={() => {
@@ -180,6 +181,7 @@ const GameOfLife = () => {
         </button>
         {/*input and button for fixed generation runs*/}
         <input
+          className="genNum"
           type="number"
           min="1"
           value={runCount}
@@ -190,7 +192,6 @@ const GameOfLife = () => {
         <button onClick={runFixedGenerations} style={{ marginLeft: 10 }}>
           Run {runCount || ""} Generations
         </button>
-
         {/* Clear Grid button */}
         <button onClick={clearGrid} style={{ marginLeft: 10 }}>
           Clear
@@ -198,7 +199,7 @@ const GameOfLife = () => {
       </div>
 
       {/* Preset Patterns */}
-      <div style={{ marginTop: 10 }}>
+      <div className="presets">
         <span>Presets: </span>
         {Object.keys(presets).map((name) => (
           <button
@@ -212,12 +213,7 @@ const GameOfLife = () => {
       </div>
 
       {/* Grid Display */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: `repeat(${numCols}, 20px)`,
-        }}
-      >
+      <div className="grid">
         {grid.map((row, i) =>
           row.map((col, j) => (
             <div
