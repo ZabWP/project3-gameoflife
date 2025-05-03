@@ -125,9 +125,42 @@ const GameOfLife = () => {
         timeSpentRef.current += diff;
         setTimeSpent(timeSpentRef.current);
         startTimeRef.current = null;
+        saveTimeSpent();
       }
     }
   }, [running]);
+
+  const saveTimeSpent = async () => {
+    // If timing is still running, add that to total
+    if (running && startTimeRef.current !== null) {
+      const diff = Date.now() - startTimeRef.current;
+      timeSpentRef.current += diff;
+      startTimeRef.current = null;
+    }
+
+    try {
+      console.log(Math.floor(timeSpentRef.current / 1000));
+      const response = await fetch(
+        "https://codd.cs.gsu.edu/~zbronola1/GOL/updateTime.php",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username,
+            timeSpent: Math.floor(timeSpentRef.current / 1000), // in seconds
+          }),
+        }
+      );
+      const data = await response.json();
+      if (data.status !== "success") {
+        throw new Error("Failed to save time spent");
+      }
+    } catch (error) {
+      console.error("Error saving time spent:", error);
+    }
+  };
 
   // Save time on unmount and tab/window close
   useEffect(() => {

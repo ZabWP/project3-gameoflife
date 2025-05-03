@@ -127,7 +127,7 @@ const Admin = () => {
             <tr key={user.userID}>
               <td>{user.userID}</td>
               <td>{user.username}</td>
-              <td>{formatTime(user.timeSpent)}</td>
+              <td>{user.timeSpent ? user.timeSpent + " seconds" : null} </td>
               <td>{user.createdAt}</td>
               <td>{user.isAdmin ? "Yes" : "No"}</td>
               <td>
